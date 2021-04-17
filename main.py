@@ -8,8 +8,8 @@ pygame.display.set_caption('Snake')
 from constants import *
 from colors import *
 
-snake_head = [1, 1]
-snake      = (snake_head)
+snake_head = [2, 1]
+snake      = [snake_head, [1, 1], [0, 1]]
 h_vel      = 1
 v_vel      = 0
 
@@ -37,13 +37,21 @@ while running:
 
     SCREEN.fill(COLOR_DARK)
 
-    if len(snake) - 1 == 1:
+    if len(snake) < 2:
+        snake_head[0] += h_vel
+        snake_head[1] += v_vel
+    else:
+        del snake[-1]
+        snake.insert(1, [snake_head[0], snake_head[1]])
         snake_head[0] += h_vel
         snake_head[1] += v_vel
 
-    print(snake)
+    print(f'Snake: {snake}')
+    print(f'Length: {len(snake)}')
+    print(f'Last: {snake[-1]}')
 
-    pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(snake_head[0] * TILE_SIZE, snake_head[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+    for tile in snake:
+        pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(tile[0] * TILE_SIZE, tile[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
 
     pygame.display.update()
     clock.tick(1 / WAIT_TIME)
