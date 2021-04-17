@@ -22,8 +22,13 @@ def check_if_alive(snake):
         return False
     elif snake[0][1] < 0 or snake[0][1] > GAME_HEIGHT / TILE_SIZE - 1:
         return False
-    else:
-        return True
+
+    no_head = snake.copy()
+    del no_head[0]
+
+    if snake_head in no_head:
+        return False
+    return True
 
 def generate_food(snake):
     food_x = random.randint(0, GAME_WIDTH / TILE_SIZE - 1)
