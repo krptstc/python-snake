@@ -13,7 +13,7 @@ class Food:
         self.y = random.randint(0, GAME_HEIGHT / TILE_SIZE - 1)
 
         while [self.x, self.y] in snake_body:
-            self.new_position()
+            self.new_position(snake_body)
 
         return [self.x, self.y]
 
