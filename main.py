@@ -1,4 +1,5 @@
 import pygame
+import random
 pygame.init()
 
 from constants import *
@@ -22,6 +23,16 @@ def check_if_alive(snake):
         return False
     else:
         return True
+
+def generate_food(snake):
+    food_x = random.randint(0, GAME_WIDTH / TILE_SIZE - 1)
+    food_y = random.randint(0, GAME_HEIGHT / TILE_SIZE - 1)
+    while [food_x, food_y] in snake:
+        food_x = random.randint(0, GAME_WIDTH / TILE_SIZE - 1)
+        food_y = random.randint(0, GAME_HEIGHT / TILE_SIZE - 1)
+    return [food_x, food_y]
+
+current_food = generate_food(snake)
 
 running = True
 while running:
@@ -58,6 +69,7 @@ while running:
 
     for tile in snake:
         pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(tile[0] * TILE_SIZE, tile[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+    pygame.draw.rect(SCREEN, COLOR_SECONDARY, pygame.Rect(current_food[0] * TILE_SIZE, current_food[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
 
     pygame.display.update()
     clock.tick(1 / WAIT_TIME)
