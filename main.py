@@ -1,12 +1,12 @@
 import pygame
 pygame.init()
 
-WINDOW_SIZE = (800, 600)
-SCREEN      = pygame.display.set_mode(WINDOW_SIZE)
-pygame.display.set_caption('Snake')
-
 from constants import *
 from colors import *
+
+WINDOW_SIZE = (GAME_WIDTH, GAME_HEIGHT)
+SCREEN      = pygame.display.set_mode(WINDOW_SIZE)
+pygame.display.set_caption('Snake')
 
 snake_head = [2, 1]
 snake      = [snake_head, [1, 1], [0, 1]]
@@ -14,6 +14,14 @@ h_vel      = 1
 v_vel      = 0
 
 clock = pygame.time.Clock()
+
+def check_if_alive(snake):
+    if snake[0][0] < 0 or snake[0][0] > GAME_WIDTH / TILE_SIZE - 1:
+        return False
+    elif snake[0][1] < 0 or snake[0][1] > GAME_HEIGHT / TILE_SIZE - 1:
+        return False
+    else:
+        return True
 
 running = True
 while running:
@@ -45,6 +53,9 @@ while running:
         snake.insert(1, [snake_head[0], snake_head[1]])
         snake_head[0] += h_vel
         snake_head[1] += v_vel
+
+    print(snake[0][0], snake[0][1])
+    running = check_if_alive(snake)
 
     print(f'Snake: {snake}')
     print(f'Length: {len(snake)}')
