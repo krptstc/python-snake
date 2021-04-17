@@ -54,12 +54,7 @@ while running:
         snake_head[0] += h_vel
         snake_head[1] += v_vel
 
-    print(snake[0][0], snake[0][1])
     running = check_if_alive(snake)
-
-    print(f'Snake: {snake}')
-    print(f'Length: {len(snake)}')
-    print(f'Last: {snake[-1]}')
 
     for tile in snake:
         pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(tile[0] * TILE_SIZE, tile[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
