@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 pygame.init()
 
 from constants import *
@@ -82,3 +83,7 @@ while running:
 
     pygame.display.update()
     clock.tick(1 / WAIT_TIME)
+
+pygame.mixer.music.load('death.wav')
+pygame.mixer.music.play(0)
+time.sleep(1)
