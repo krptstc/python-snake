@@ -1,0 +1,2 @@
+COLOR_DARK    = (14, 14, 14)
+COLOR_PRIMARY = (0, 220, 32)
