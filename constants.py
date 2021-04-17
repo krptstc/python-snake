@@ -1,2 +1,2 @@
 TILE_SIZE = 40
-WAIT_TIME = .5
+WAIT_TIME = .1

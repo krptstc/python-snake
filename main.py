@@ -1,5 +1,4 @@
 import pygame
-import time
 pygame.init()
 
 WINDOW_SIZE = (800, 600)
@@ -14,11 +13,27 @@ snake      = (snake_head)
 h_vel      = 1
 v_vel      = 0
 
+clock = pygame.time.Clock()
+
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RIGHT]:
+            h_vel = 1
+            v_vel = 0
+        elif keys[pygame.K_LEFT]:
+            h_vel = -1
+            v_vel = 0
+        elif keys[pygame.K_UP]:
+            h_vel = 0
+            v_vel = -1
+        elif keys[pygame.K_DOWN]:
+            h_vel = 0
+            v_vel = 1
 
     SCREEN.fill(COLOR_DARK)
 
@@ -31,4 +46,4 @@ while running:
     pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(snake_head[0] * TILE_SIZE, snake_head[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
 
     pygame.display.update()
-    pygame.time.wait(int(WAIT_TIME * 1000))
+    clock.tick(1 / WAIT_TIME)
