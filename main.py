@@ -73,6 +73,8 @@ while running:
     if snake_head == current_food:
         current_food = generate_food(snake)
         grow_snake(snake)
+        pygame.mixer.music.load('eat_food.wav')
+        pygame.mixer.music.play(0)
 
     for tile in snake:
         pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(tile[0] * TILE_SIZE, tile[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
