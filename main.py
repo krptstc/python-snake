@@ -34,6 +34,9 @@ def generate_food(snake):
 
 current_food = generate_food(snake)
 
+def grow_snake(snake):
+    snake.append(snake[-1])
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -69,6 +72,7 @@ while running:
 
     if snake_head == current_food:
         current_food = generate_food(snake)
+        grow_snake(snake)
 
     for tile in snake:
         pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(tile[0] * TILE_SIZE, tile[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
