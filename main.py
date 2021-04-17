@@ -67,6 +67,9 @@ while running:
 
     running = check_if_alive(snake)
 
+    if snake_head == current_food:
+        current_food = generate_food(snake)
+
     for tile in snake:
         pygame.draw.rect(SCREEN, COLOR_PRIMARY, pygame.Rect(tile[0] * TILE_SIZE, tile[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
     pygame.draw.rect(SCREEN, COLOR_SECONDARY, pygame.Rect(current_food[0] * TILE_SIZE, current_food[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE))
