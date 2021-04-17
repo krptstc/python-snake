@@ -40,8 +40,6 @@ while running:
 
     if len(snake.body) < 2:
         snake.move()
-        snake.head[0] += snake.h_vel
-        snake.head[1] += snake.v_vel
     else:
         del snake.body[-1]
         snake.body.insert(1, [snake.head[0], snake.head[1]])

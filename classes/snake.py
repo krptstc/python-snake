@@ -6,7 +6,7 @@ from modules.colors import *
 class Snake:
     def __init__(self):
         self.head  = [2, 1]
-        self.body  = [self.head, [1, 1], [0, 1]]
+        self.body  = [self.head, [1, 0], [0, 0]]
         self.h_vel = 1
         self.v_vel = 0
 
