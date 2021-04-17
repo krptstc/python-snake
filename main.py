@@ -3,8 +3,8 @@ import random
 import time
 pygame.init()
 
-from constants import *
-from colors import *
+from modules.constants import *
+from modules.colors import *
 
 WINDOW_SIZE = (GAME_WIDTH, GAME_HEIGHT)
 SCREEN      = pygame.display.set_mode(WINDOW_SIZE)
@@ -79,7 +79,7 @@ while running:
     if snake_head == current_food:
         current_food = generate_food(snake)
         grow_snake(snake)
-        pygame.mixer.music.load('eat_food.wav')
+        pygame.mixer.music.load('sound/eat_food.wav')
         pygame.mixer.music.play(0)
 
     for tile in snake:
@@ -89,6 +89,6 @@ while running:
     pygame.display.update()
     clock.tick(1 / WAIT_TIME)
 
-pygame.mixer.music.load('death.wav')
+pygame.mixer.music.load('sound/death.wav')
 pygame.mixer.music.play(0)
 time.sleep(1)
